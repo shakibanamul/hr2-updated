@@ -42,34 +42,31 @@ function App() {
   };
 
   return (
-    <div className={`flex min-h-screen bg-gray-50 transition-all duration-300 ${
-      sidebarOpen ? 'lg:pl-64' : 'lg:pl-20'
-    }`}>
+    <div className="flex min-h-screen bg-gray-50">
+      {/* Mobile overlay */}
+      {sidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+      
       <Sidebar 
         activeSection={activeSection} 
         setActiveSection={setActiveSection}
         isOpen={sidebarOpen}
-        setIsOpen={setSidebarOpen}
       />
-      <div className="flex-1 flex flex-col">
-        {/* Desktop Header */}
-        <Header sidebarOpen={sidebarOpen} setActiveSection={setActiveSection} />
-        
-        {/* Mobile header */}
-        <div className="lg:hidden bg-white border-b border-gray-200 p-4">
-          <div className="flex items-center justify-between">
-            <button
-              onClick={() => setSidebarOpen(true)}
-              className="text-gray-600 hover:text-gray-900 p-1 rounded-lg hover:bg-gray-100 transition-colors"
-            >
-              <Menu size={24} />
-            </button>
-            <h1 className="text-base sm:text-lg font-semibold text-gray-900 truncate">
-              {activeSection.charAt(0).toUpperCase() + activeSection.slice(1)}
-            </h1>
-            <div className="w-6"></div> {/* Spacer for centering */}
-          </div>
-        </div>
+      
+      {/* Header */}
+      <Header 
+        sidebarOpen={sidebarOpen} 
+        setSidebarOpen={setSidebarOpen}
+        setActiveSection={setActiveSection} 
+      />
+      
+      <div className={`flex-1 flex flex-col transition-all duration-300 ${
+        sidebarOpen ? 'lg:ml-64' : 'lg:ml-20'
+      }`}>
         
         {/* Main content */}
         <div className="flex-1 overflow-auto pt-16">
