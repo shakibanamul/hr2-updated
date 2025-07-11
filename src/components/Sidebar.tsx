@@ -39,12 +39,11 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection, setActiveSection, isOp
       <div className={`
         fixed left-0 z-40 bg-white text-gray-900 transform transition-all duration-300 ease-in-out shadow-xl border-r border-gray-200
         ${isOpen ? 'w-64 translate-x-0' : 'w-20 -translate-x-full lg:translate-x-0'}
-      `}>
+      `}
         style={{
           top: '64px', // Header height
           height: 'calc(100vh - 64px)' // Full height minus header
-        }}
-      >
+        }}>
         <div className="flex flex-col h-full">
           {/* Navigation */}
           <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
