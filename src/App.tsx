@@ -58,18 +58,20 @@ function App() {
       />
       
       {/* Header */}
-      <Header 
-        sidebarOpen={sidebarOpen} 
-        setSidebarOpen={setSidebarOpen}
-        setActiveSection={setActiveSection} 
-      />
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Header 
+          sidebarOpen={sidebarOpen} 
+          setSidebarOpen={setSidebarOpen}
+          setActiveSection={setActiveSection} 
+        />
+      </div>
       
       <div className={`flex-1 flex flex-col transition-all duration-300 ${
         sidebarOpen ? 'lg:ml-64' : 'lg:ml-20'
       }`}>
         
         {/* Main content */}
-        <div className="flex-1 overflow-auto pt-16">
+        <div className="flex-1 overflow-auto" style={{ marginTop: '64px' }}>
           <div className="p-4 sm:p-6 lg:p-6">
             {renderContent()}
           </div>
